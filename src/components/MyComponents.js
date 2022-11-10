@@ -7,7 +7,11 @@ class MyComponent extends React.Component {
     age: 21,
   };
   handleClick() {
-    console.log("hehe");
+    this.setState({
+      name: "Long",
+      age: Math.floor(Math.random() * 100 + 1),
+    });
+    console.log("My name is:", this.state.name);
   }
   render() {
     return (
@@ -15,7 +19,7 @@ class MyComponent extends React.Component {
         <div>My Name is: {this.state.name}</div>
         <div>My Address is: {this.state.address}</div>
         <div>My Age is: {this.state.age}</div>
-        <button onClick={this.handleClick}>Click me!</button>
+        <button onClick={() => this.handleClick()}>Click me!</button>
       </div>
     );
   }
