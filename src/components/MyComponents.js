@@ -13,13 +13,23 @@ class MyComponent extends React.Component {
     });
     console.log("My name is:", this.state.name);
   }
+  handleOnchange = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  };
   render() {
     return (
       <div>
         <div>My Name is: {this.state.name}</div>
-        <div>My Address is: {this.state.address}</div>
-        <div>My Age is: {this.state.age}</div>
-        <button onClick={() => this.handleClick()}>Click me!</button>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
+          <input type="text" onChange={(event) => this.handleOnchange(event)} />
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
